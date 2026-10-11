@@ -1,0 +1,43 @@
+# 쎈Clean Windows 실기 시험: wintest/** 브랜치를 push하면 windows-latest에서 시험하고,
+# 결과(wintest-out/)를 wintest-results/<브랜치 이름> 브랜치로 올린 뒤 시험 브랜치를 지운다.
+name: wintest
+on:
+  push:
+    branches: ['wintest/**']
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 준비
+        shell: pwsh
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: |
+          cd wintest
+          npm init -y | Out-Null
+          npm i --no-audit --no-fund koffi@2.16.3 playwright@1.56.1
+      - name: 시험
+        shell: pwsh
+        run: |
+          cd wintest
+          $inst = Get-ChildItem -Filter 'SenClean-Setup-*.exe' | Select-Object -First 1
+          node harness.js src ..\wintest-out $(if ($inst) { $inst.FullName } else { '' })
+      - name: 결과 올리기
+        if: always()
+        shell: bash
+        run: |
+          NAME="${GITHUB_REF_NAME#wintest/}"
+          git config user.name "senclean-bot"; git config user.email "senclean-bot@users.noreply.github.com"
+          git checkout --orphan "wintest-results/$NAME"
+          git rm -rq --cached . || true
+          git add -f wintest-out
+          git commit -qm "wintest results $NAME"
+          git push -f origin "wintest-results/$NAME"
+          git push origin --delete "${GITHUB_REF_NAME}" || true
