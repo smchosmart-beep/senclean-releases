@@ -27,8 +27,13 @@ jobs:
         shell: pwsh
         run: |
           cd wintest
-          $inst = Get-ChildItem -Filter 'SenClean-Setup-*.exe' | Select-Object -First 1
-          node harness.js src ..\wintest-out $(if ($inst) { $inst.FullName } else { '' })
+          if (Test-Path e2e-args.txt) {
+            $a = (Get-Content e2e-args.txt -Raw).Trim() -split '\s+'
+            node update-e2e.js ..\wintest-out $a[0] $a[1]
+          } else {
+            $inst = Get-ChildItem -Filter 'SenClean-Setup-*.exe' | Select-Object -First 1
+            node harness.js src ..\wintest-out $(if ($inst) { $inst.FullName } else { '' })
+          }
       - name: 결과 올리기
         if: always()
         shell: bash
@@ -40,4 +45,8 @@ jobs:
           git add -f wintest-out
           git commit -qm "wintest results $NAME"
           git push -f origin "wintest-results/$NAME"
+          # 예전 결과 브랜치 정리(이번 결과만 남김)
+          for b in $(git ls-remote --heads origin 'wintest-results/*' | awk '{print $2}' | sed 's#refs/heads/##'); do
+            [ "$b" != "wintest-results/$NAME" ] && git push origin --delete "$b" || true
+          done
           git push origin --delete "${GITHUB_REF_NAME}" || true
