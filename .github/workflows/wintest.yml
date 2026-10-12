@@ -27,7 +27,9 @@ jobs:
         shell: pwsh
         run: |
           cd wintest
-          if (Test-Path e2e-args.txt) {
+          if (Test-Path run.ps1) {
+            ./run.ps1
+          } elseif (Test-Path e2e-args.txt) {
             $a = (Get-Content e2e-args.txt -Raw).Trim() -split '\s+'
             node update-e2e.js ..\wintest-out $a[0] $a[1]
           } else {
