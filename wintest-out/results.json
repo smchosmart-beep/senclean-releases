@@ -1,0 +1,105 @@
+{
+ "at": "2026-10-12T15:48:29.735Z",
+ "results": [
+  {
+   "name": "예전 버전 1.1.1 설치",
+   "ok": true,
+   "detail": {
+    "v": "1.1.1",
+    "loc": null
+   }
+  },
+  {
+   "name": "실행: 예전 버전 표시",
+   "ok": true
+  },
+  {
+   "name": "자동 확인: 새 버전 알림",
+   "ok": true,
+   "detail": {
+    "sec": 12,
+    "chip": "새 버전 1.2.0",
+    "toast": "쎈Clean 새 버전 1.2.0이 나왔어요자세히"
+   }
+  },
+  {
+   "name": "설정: 상태·바뀐 점",
+   "ok": true,
+   "detail": {
+    "status": "새 버전 1.2.0이 있어요.",
+    "notes": "1.2.0에서 바뀐 점\n쎈Clean 1.2.0\n\n바뀐 점\n\n· 쎈Clean 이용약관을 새로 정했습니다. 공식 배포처가 아닌 곳에 다시 올리기, 수정·개작, 설치 파일을 AI 서비스에 올려 분석·복제하게 하는 일 등은 허락 없이 할 수 없습니다.\n\n· 설정 > 쎈Clean 업데이트와 로고를 누르면 뜨는 업데이트 창 아래에 저작권 표시와 [이용약관 보기]를 넣"
+   }
+  },
+  {
+   "name": "받기 완료(서명 확인 통과)",
+   "ok": true,
+   "detail": {
+    "sec": 3,
+    "status": "새 버전 1.2.0을 받았어요. 다시 시작하면 설치돼요."
+   }
+  },
+  {
+   "name": "설치 누르면 앱이 닫힘",
+   "ok": true,
+   "detail": 0
+  },
+  {
+   "name": "설치 후 제거 목록 버전 1.2.0",
+   "ok": true,
+   "detail": {
+    "v": "1.2.0",
+    "loc": null
+   }
+  },
+  {
+   "name": "설치 후 쎈Clean이 다시 켜짐",
+   "ok": true,
+   "detail": [
+    "\"쎈Clean.exe\",\"1256\",\"Console\",\"2\",\"140,044 K\"",
+    "\"쎈Clean.exe\",\"1844\",\"Console\",\"2\",\"78,548 K\"",
+    "\"쎈Clean.exe\",\"4224\",\"Console\",\"2\",\"55,560 K\"",
+    "\"쎈Clean.exe\",\"8880\",\"Console\",\"2\",\"117,232 K\""
+   ]
+  },
+  {
+   "name": "설치 폴더 LICENSE.txt(이용약관)",
+   "ok": true
+  },
+  {
+   "name": "다시 켠 앱의 버전 표시",
+   "ok": true,
+   "detail": "쎈Clean v1.2.0"
+  },
+  {
+   "name": "새 버전: 이용권 버튼·창(로그인 전)",
+   "ok": true,
+   "detail": {
+    "open": true,
+    "button": "작업 보호 모드"
+   }
+  },
+  {
+   "name": "새 버전: 로고 누르면 업데이트 창·최신",
+   "ok": true,
+   "detail": "지금 최신 버전이에요."
+  },
+  {
+   "name": "업데이트 기록(기록용)",
+   "ok": true,
+   "detail": [
+    "2026-10-12T15:47:51.153Z WARN disableWebInstaller is set to false, you should set it to true if you do not plan on using a web installer. This will default to true in a future version.",
+    "2026-10-12T15:47:51.153Z INFO Download block maps (old: \"https://github.com/smchosmart-beep/senclean-releases/releases/download/v1.1.1/SenClean-Setup-1.1.1.exe.blockmap\", new: https://github.com/smchosmart-beep/senclean-releases/releases/download/v1.2.0/SenClean-Setup-1.2.0.exe.blockmap)",
+    "2026-10-12T15:47:51.607Z INFO File has 464 changed blocks",
+    "2026-10-12T15:47:51.610Z INFO Full: 94,649.6 KB, To download: 8,981.55 KB (9%)",
+    "2026-10-12T15:47:51.612Z INFO Differential download: https://github.com/smchosmart-beep/senclean-releases/releases/download/v1.2.0/SenClean-Setup-1.2.0.exe",
+    "2026-10-12T15:47:51.780Z INFO Redirect to https://release-assets.githubusercontent.com/github-production-release-asset/1413644814/c986c2dc-dabe-4744-a446-f1f47e340734",
+    "2026-10-12T15:47:53.918Z INFO New version 1.2.0 has been downloaded to C:\\Users\\runneradmin\\AppData\\Local\\sen-clean-updater\\pending\\SenClean-Setup-1.2.0.exe",
+    "2026-10-12T15:47:54.198Z INFO Install on explicit quitAndInstall",
+    "2026-10-12T15:47:54.198Z INFO Install: isSilent: true, isForceRunAfter: true",
+    "2026-10-12T15:47:54.199Z INFO Executing: C:\\Users\\runneradmin\\AppData\\Local\\sen-clean-updater\\pending\\SenClean-Setup-1.2.0.exe with args: --updated,/S,--force-run",
+    "2026-10-12T15:48:28.711Z INFO Checking for update",
+    "2026-10-12T15:48:29.140Z INFO Update for version 1.2.0 is not available (latest version: 1.2.0, downgrade is disallowed)."
+   ]
+  }
+ ]
+}
